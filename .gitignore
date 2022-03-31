@@ -5,3 +5,5 @@
 __pycache__
 db.sqlite3
 media
+BX-Book-Ratings.csv
+BX-Books.csv
