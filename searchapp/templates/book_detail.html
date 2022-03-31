@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+<html>
+{% block content %}
+  <body>
+    <div class="container">
+    <br/><br/>
+    <div class="row pt-2 pt-sm-4 mt-sm-2 mt-md-3">
+       <div class="col-4 pr-4 pr-lg-5 pl-0 d-none d-md-block">
+           <img src="{{book.image_url_l}}" class="card-img-top" style="object-fit: contain" alt={{book.book_title}}>
+       </div>
+        <div class="col-md-6 pt-md-1 pl-md-2 pr-lg-4">
+            <h2 class="text-center" style="text-transform: capitalize;"> {{book.book_title}}</h2>
+            <hr>
+             <p class="lead" style="text-transform: capitalize;"><b>Book Author</b>: {{book.book_author}} </p>
+            <p class="lead"><b>Year of Publication: </b>{{book.year_of_publication}} </p>
+            <p class="lead" style="text-transform: capitalize;"><b>Publisher: </b>{{book.publisher}} </p>
+            <p class="lead"><b>ISBN:</b> {{book.isbn}} </p>
+        </div>
+    </div>
+     <button type="submit" class="btn btn-dark btn-rounded" onclick="window.history.back()" style="margin: 20px;">Back</button>
+    </div>
+  {% endblock %}
+  </body>
+</html>

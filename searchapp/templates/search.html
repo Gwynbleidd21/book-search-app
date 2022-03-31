@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+<html>
+{% block content %}
+    <body>
+    <br/></br/>
+    <div class="container">
+        <div class="col-md-8 offset-md-2">
+        <div class="list-group">
+        {% if query %}
+               <h2>
+               {% with results|length as total_results %}
+               Found {{ total_results }} result{{ total_results|pluralize }}
+               {% endwith %}
+               </h2>
+            {% for c in results %}
+                 <form action="{% url 'book_detail' c.book%}" class="form-inline" method="get">
+                  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1" style="text-transform: capitalize;">{{c.book}}</h5>
+                        <small>
+                            <button type="submit" class="btn btn-dark btn-rounded">
+                                Detail
+                            </button>
+                        </small>
+                    </div>
+                      <p class="mb-1">Correlation: {{c.corr|floatformat:2}}</p>
+                  <small class="text-muted">Average rating: {{c.avg_rating|floatformat:2}}</small>
+                  </a>
+                </form>
+                {% empty %}
+                <h3>No results found.</h3>
+            {% endfor %}
+        {% endif %}
+        <form action="{% url 'book_list' %}" class="form-inline" method="get">
+        <button type="submit" class="btn btn-dark btn-rounded" style="margin: 20px;">Back</button>
+        </form>
+    </div>
+    </div>
+    </div>
+{% endblock %}
+</body>
+<html>
